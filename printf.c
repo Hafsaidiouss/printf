@@ -22,35 +22,6 @@ int printstr(char *str)
 	return (i);
 }
 /**
- * flag_count - counts flags
- * @str: string
- * Return: flag count
- */
-int flag_count(const char *str)
-{
-	char *init = "#0- +'I";
-	int c = 0;
-	char *flag;
-
-	while (*str != '\0')
-	{
-		flag = init;
-		while (*flag != '\0')
-		{
-			if (*str == *flag)
-			{
-				c++;
-				break;
-			}
-			flag++;
-		}
-		if (*flag == '\0')
-			return (c);
-		str++;
-	}
-	return (c);
-}
-/**
  * _printf - that produces output according to a format
  * @format: print format
  * Return: the number of characters printed
@@ -60,7 +31,6 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int c = 0;
 	char *str;
-	int fc;
 
 	va_start(ap, format);
 	while (format != NULL && *format != '\0')
@@ -73,9 +43,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			fc = flag_count(format);
-			format = format + fc + 1;
-			switch (*format)
+			switch (*(format + 1))
 			{
 				case '%':
 					_putchar('%');
@@ -90,12 +58,12 @@ int _printf(const char *format, ...)
 					c = c + printstr(str);
 					break;
 				default:
-					_putchar('%');
-					c = c + 1;
-					format = format - fc - 1;
+					_putchar(*format);
+					_putchar(*(format + 1));
+					c = c + 2;
 					break;
 			}
-			format++;
+			format = format + 2;
 		}
 	}
 	va_end(ap);
