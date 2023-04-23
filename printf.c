@@ -53,6 +53,9 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 		case 'X':
 			*c = *c + print_hex_upper(va_arg(*ap, unsigned int));
 			break;
+		case 'S':
+			*c = *c + print_S_string(va_arg(*ap, char *));
+			break;
 		default:
 			_putchar('%');
 			*c = *c + 1;
