@@ -58,6 +58,10 @@ int _printf(const char *format, ...)
 					str = va_arg(ap, char *);
 					c = c + printstr(str);
 					break;
+				default:
+					_putchar(*format);
+					_putchar(*(format + 1));
+					break;
 			}
 			format = format + 2;
 		}
