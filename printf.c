@@ -126,7 +126,7 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			*c = -1;
 			break;
 		case 'b':
-			c = c + print_binary(va_arg(*ap, unsigned int));
+			*c = *c + print_binary(va_arg(*ap, unsigned int));
 			break;
 		default:
 			_putchar('%');
