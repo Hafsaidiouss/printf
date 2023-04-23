@@ -61,6 +61,7 @@ int _printf(const char *format, ...)
 				default:
 					_putchar(*format);
 					_putchar(*(format + 1));
+					c = c + 2;
 					break;
 			}
 			format = format + 2;
