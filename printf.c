@@ -3,6 +3,25 @@
 #include "main.h"
 #include <stdarg.h>
 /**
+ * printstr - prints string
+ * @str: string
+ * Return: len str
+ */
+int printstr(char *str)
+{
+	int i = 0;
+
+	if (str == NULL)
+		return (printstr("(null)"));
+	while (*str != '\0')
+	{
+		_putchar(*str);
+		i++;
+		str++;
+	}
+	return (i);
+}
+/**
  * _printf - that produces output according to a format
  * @format: print format
  * Return: the number of characters printed
@@ -37,12 +56,7 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(ap, char *);
-					while (str != NULL && *str != '\0')
-					{
-						_putchar(*str);
-						c++;
-						str++;
-					}
+					c = c + printstr(str);
 					break;
 			}
 			format = format + 2;
