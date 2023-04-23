@@ -46,6 +46,21 @@ int printstr(char *str)
 	return (i);
 }
 /**
+ * print_binary - print binary
+ * @n:  a number
+ * Return: counter
+ */
+int print_binary(unsigned int n)
+{
+	int c = 0;
+
+	if (n > 1)
+		c = c + print_binary(n / 2);
+	_putchar(n % 2 + '0');
+	c++;
+	return (c);
+}
+/**
  * flag_count - counts flags
  * @str: string
  * Return: flag count
@@ -109,6 +124,9 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 		case '\0':
 			(*format)--;
 			*c = -1;
+			break;
+		case 'b':
+			c = c + print_binary(va_arg(*ap, unsigned int));
 			break;
 		default:
 			_putchar('%');
