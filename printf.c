@@ -33,7 +33,6 @@ int _printf(const char *format, ...)
 	char *str;
 
 	va_start(ap, format);
-
 	while (format != NULL && *format != '\0')
 	{
 		if (*format != '%')
