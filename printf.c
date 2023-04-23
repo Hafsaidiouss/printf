@@ -73,8 +73,8 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			fc = flag_count(format);
-			format = format + fc + 1;
+			fc = flag_count(++format);
+			format = format + fc; 
 			switch (*format)
 			{
 				case '%':
