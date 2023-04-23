@@ -2,93 +2,6 @@
 #include <stdio.h>
 #include "main.h"
 #include <stdarg.h>
-/**
- * print_number - print number using _putchar
- * @n: Number
- * Return: count
- */
-int print_number(int n)
-{
-	unsigned int i = n;
-	int c = 0;
-
-	if (n < 0)
-	{
-		_putchar('-');
-		c++;
-		i = -i;
-	}
-	if (i / 10)
-	{
-		c = c + print_number(i / 10);
-	}
-	_putchar(i % 10 + '0');
-	c++;
-	return (c);
-}
-/**
- * printstr - prints string
- * @str: string
- * Return: len str
- */
-int printstr(char *str)
-{
-	int i = 0;
-
-	if (str == NULL)
-		return (printstr("(null)"));
-	while (*str != '\0')
-	{
-		_putchar(*str);
-		i++;
-		str++;
-	}
-	return (i);
-}
-/**
- * print_binary - print binary
- * @n:  a number
- * Return: counter
- */
-int print_binary(unsigned int n)
-{
-	int c = 0;
-
-	if (n > 1)
-		c = c + print_binary(n / 2);
-	_putchar(n % 2 + '0');
-	c++;
-	return (c);
-}
-/**
- * flag_count - counts flags
- * @str: string
- * Return: flag count
- */
-int flag_count(const char *str)
-{
-	char *init = "#0- +'I";
-	int c = 0;
-	char *flag;
-
-	while (*str != '\0')
-	{
-		flag = init;
-		while (*flag != '\0')
-		{
-			if (*str == *flag)
-			{
-				c++;
-				break;
-			}
-			flag++;
-		}
-		if (*flag == '\0')
-			return (c);
-		str++;
-	}
-	return (c);
-}
 
 /**
  * _printf_switch_helper - handle switch cases for _printf function
@@ -113,7 +26,7 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			break;
 		case 's':
 			str = va_arg(*ap, char *);
-			*c = *c + printstr(str);
+			*c = *c + print_str(str);
 			break;
 		case 'i':
 			*c = *c + print_number(va_arg(*ap, int));
