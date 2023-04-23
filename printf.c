@@ -91,6 +91,7 @@ int _printf(const char *format, ...)
 					break;
 				case '\0':
 					format--;
+					c = -1;
 					break;
 				default:
 					_putchar('%');
