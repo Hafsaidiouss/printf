@@ -3,6 +3,30 @@
 #include "main.h"
 #include <stdarg.h>
 /**
+ * print_number - print number using _putchar
+ * @n: Number
+ * Return: count
+ */
+int print_number(int n)
+{
+	unsigned int i = n;
+	int c = 0;
+
+	if (n < 0)
+	{
+		_putchar(45);
+		c++;
+		i = -i;
+	}
+	if (i / 10)
+	{
+		c = c + print_number(i / 10);
+	}
+	_putchar(i % 10 + '0');
+	c++;
+	return (c);
+}
+/**
  * printstr - prints string
  * @str: string
  * Return: len str
@@ -88,6 +112,12 @@ int _printf(const char *format, ...)
 				case 's':
 					str = va_arg(ap, char *);
 					c = c + printstr(str);
+					break;
+				case 'i':
+					c = c + print_number(va_arg(ap, int));
+					break;
+				case 'd':
+					c = c + print_number(va_arg(ap, int));
 					break;
 				case '\0':
 					format--;
