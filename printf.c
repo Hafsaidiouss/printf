@@ -74,6 +74,50 @@ int flag_count(const char *str)
 	}
 	return (c);
 }
+
+/**
+ * _printf_switch_helper - handle switch cases for _printf function
+ * @format: pointer of format
+ * @c: pointer to c
+ * @fc: flag count value
+ * @ap: variadic arg list
+ */
+void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
+{
+	char *str;
+
+	switch (**format)
+	{
+		case '%':
+			_putchar('%');
+			(*c)++;
+			break;
+		case 'c':
+			_putchar((char) va_arg(*ap, int));
+			(*c)++;
+			break;
+		case 's':
+			str = va_arg(*ap, char *);
+			*c = *c + printstr(str);
+			break;
+		case 'i':
+			*c = *c + print_number(va_arg(*ap, int));
+			break;
+		case 'd':
+			*c = *c + print_number(va_arg(*ap, int));
+			break;
+		case '\0':
+			(*format)--;
+			*c = -1;
+			break;
+		default:
+			_putchar('%');
+			*c = *c + 1;
+			*format = *format - fc - 1;
+			break;
+	}
+}
+
 /**
  * _printf - that produces output according to a format
  * @format: print format
@@ -83,7 +127,6 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int c = 0;
-	char *str;
 	int fc;
 
 	if (format == NULL)
@@ -100,37 +143,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			fc = flag_count(++format);
-			format = format + fc; 
-			switch (*format)
-			{
-				case '%':
-					_putchar('%');
-					c++;
-					break;
-				case 'c':
-					_putchar((char) va_arg(ap, int));
-					c++;
-					break;
-				case 's':
-					str = va_arg(ap, char *);
-					c = c + printstr(str);
-					break;
-				case 'i':
-					c = c + print_number(va_arg(ap, int));
-					break;
-				case 'd':
-					c = c + print_number(va_arg(ap, int));
-					break;
-				case '\0':
-					format--;
-					c = -1;
-					break;
-				default:
-					_putchar('%');
-					c = c + 1;
-					format = format - fc - 1;
-					break;
-			}
+			format = format + fc;
+			_printf_switch_helper(&format, &c, fc, &ap);
 			format++;
 		}
 	}
