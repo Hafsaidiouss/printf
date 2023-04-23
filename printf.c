@@ -41,6 +41,12 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 		case 'b':
 			*c = *c + print_binary(va_arg(*ap, unsigned int));
 			break;
+		case 'u':
+			*c = *c + print_unsigned(va_arg(*ap, unsigned int));
+			break;
+		case 'x':
+			*c = *c + print_hex_lower(va_arg(*ap, unsigned int));
+			break;
 		default:
 			_putchar('%');
 			*c = *c + 1;
