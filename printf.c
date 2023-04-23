@@ -44,8 +44,14 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 		case 'u':
 			*c = *c + print_unsigned(va_arg(*ap, unsigned int));
 			break;
+		case 'o':
+			*c = *c + print_octal(va_arg(*ap, unsigned int));
+			break;
 		case 'x':
 			*c = *c + print_hex_lower(va_arg(*ap, unsigned int));
+			break;
+		case 'X':
+			*c = *c + print_hex_upper(va_arg(*ap, unsigned int));
 			break;
 		default:
 			_putchar('%');
