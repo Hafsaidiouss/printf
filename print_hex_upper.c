@@ -14,7 +14,7 @@ int print_hex_upper(unsigned int n)
 	if (n > 15)
 		c = c + print_hex_upper(n / 16);
 	d = n % 16;
-	if (d <= 10)
+	if (d < 10)
 		_putchar(d + '0');
 	else
 		_putchar(d + 'A' - 10);
