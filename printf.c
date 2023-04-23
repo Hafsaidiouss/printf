@@ -14,7 +14,8 @@ int _printf(const char *format, ...)
 	char *str;
 
 	va_start(ap, format);
-	while (*format != '\0')
+
+	while (format != NULL && *format != '\0')
 	{
 		if (*format != '%')
 		{
@@ -36,7 +37,7 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(ap, char *);
-					while (*str != '\0')
+					while (str != NULL && *str != '\0')
 					{
 						_putchar(*str);
 						c++;
