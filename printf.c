@@ -89,6 +89,9 @@ int _printf(const char *format, ...)
 					str = va_arg(ap, char *);
 					c = c + printstr(str);
 					break;
+				case '\0':
+					format--;
+					break;
 				default:
 					_putchar('%');
 					c = c + 1;
