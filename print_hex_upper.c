@@ -17,7 +17,7 @@ int print_hex_upper(unsigned int n)
 	if (d <= 10)
 		_putchar(d + '0');
 	else
-		_putchar(d + 'A');
+		_putchar(d + 'A' - 10);
 	c++;
 	return (c);
 }
