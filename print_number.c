@@ -5,7 +5,7 @@
  * @n: Number
  * Return: count
  */
-int print_number(int n)
+int print_number(int n, const  char **format, int fc)
 {
 	unsigned int i = n;
 	int c = 0;
@@ -18,7 +18,7 @@ int print_number(int n)
 	}
 	if (i / 10)
 	{
-		c = c + print_number(i / 10);
+		c = c + print_number(i / 10, format, fc);
 	}
 	_putchar(i % 10 + '0');
 	c++;

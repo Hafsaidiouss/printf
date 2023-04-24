@@ -6,13 +6,18 @@
  *
  * Return: number of character printed
  */
-int print_hex_upper(unsigned int n)
+int print_hex_upper(unsigned int n, const char **format, int fc)
 {
 	int c = 0;
 	int d;
+	int hash = 0;
+
+	hash = flag(format, fc, '#'); 
+	if (hash)
+		c = c + print_str("0X");
 
 	if (n > 15)
-		c = c + print_hex_upper(n / 16);
+		c = c + print_hex_upper(n / 16, format, 0);
 	d = n % 16;
 	if (d < 10)
 		_putchar(d + '0');

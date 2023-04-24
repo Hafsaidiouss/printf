@@ -28,22 +28,22 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			break;
 		case 'i':
 		case 'd':
-			*c = *c + print_number(va_arg(*ap, int));
+			*c = *c + print_number(va_arg(*ap, int), format, fc);
 			break;
 		case 'b':
-			*c = *c + print_binary(va_arg(*ap, unsigned int));
+			*c = *c + print_binary(va_arg(*ap, unsigned int), format, fc);
 			break;
 		case 'u':
-			*c = *c + print_unsigned_int(va_arg(*ap, unsigned int));
+			*c = *c + print_unsigned_int(va_arg(*ap, unsigned int), format, fc);
 			break;
 		case 'o':
-			*c = *c + print_octal(va_arg(*ap, unsigned int));
+			*c = *c + print_octal(va_arg(*ap, unsigned int), format, fc);
 			break;
 		case 'x':
-			*c = *c + print_hex_lower(va_arg(*ap, unsigned int));
+			*c = *c + print_hex_lower(va_arg(*ap, unsigned int), format, fc);
 			break;
 		case 'X':
-			*c = *c + print_hex_upper(va_arg(*ap, unsigned int));
+			*c = *c + print_hex_upper(va_arg(*ap, unsigned int), format, fc);
 			break;
 		case 'S':
 			*c = *c + print_S_string(va_arg(*ap, char *));

@@ -20,11 +20,11 @@ int print_S_string(char *str)
 			{
 				_putchar('0');
 				c++;
-				c = c + print_hex_upper(*str);
+				c = c + print_hex_upper(*str, NULL, 0);
 			}
 			else
 			{
-				c = c + print_hex_upper(*str);
+				c = c + print_hex_upper(*str, NULL, 0);
 			}
 		}
 		else
