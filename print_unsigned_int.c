@@ -12,7 +12,7 @@ int print_unsigned_int(unsigned int n, const char **format, int fc)
 
 	if (i / 10)
 	{
-		c = c + print_number(i / 10, format, fc);
+		c = c + print_number(i / 10, format, 0);
 	}
 	_putchar(i % 10 + '0');
 	c++;
