@@ -9,6 +9,8 @@ int print_hex_address(long unsigned int n);
  */
 int print_pointer(void *p)
 {
+	if (p == NULL)
+		return (print_str("(nil)"));
 	return (print_str("0x") + print_hex_address((long unsigned int) p));
 }
 
