@@ -7,11 +7,16 @@ int print_hex_address(long unsigned int n);
  *
  * Return: number of characters printed
  */
-int print_pointer(void *p)
+int print_pointer(void *p, const char **format, int fc)
 {
+	int space = 0;
+
+	space = flag(format, fc, ' ');
+	if (space == 1 && p != NULL)
+		_putchar(' ');
 	if (p == NULL)
 		return (print_str("(nil)"));
-	return (print_str("0x") + print_hex_address((long unsigned int) p));
+	return (space + print_str("0x") + print_hex_address((long unsigned int) p));
 }
 
 /**
