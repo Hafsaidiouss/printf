@@ -14,9 +14,9 @@ int print_number(int n, const  char **format, int fc)
 
 	plus = flag(format, fc, '+');
 	space = flag(format, fc, ' ');
-	if (plus == 1 && n > 0)
+	if (plus == 1 && n >= 0)
 		c = c + _putchar('+');
-	if (space == 1 && plus == 0 && n > 0)
+	if (space == 1 && plus == 0 && n >= 0)
 		c = c + _putchar(' ');
 	if (n < 0)
 	{
