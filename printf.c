@@ -17,6 +17,9 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 		case '%':
 			*c = *c + _putchar('%');
 			break;
+		case 'p':
+			*c = *c + print_pointer(va_arg(*ap, void *));
+			break;
 		case 'c':
 			*c = *c + _putchar((char) va_arg(*ap, int));
 			break;

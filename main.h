@@ -13,4 +13,6 @@ int print_octal(unsigned int n);
 int print_hex_lower(unsigned int n);
 int print_hex_upper(unsigned int n);
 int print_S_string(char *str);
+int print_pointer(void *p);
+
 #endif
