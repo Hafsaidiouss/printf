@@ -12,37 +12,26 @@
  */
 void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 {
-	char *str;
-
 	switch (**format)
 	{
 		case '%':
-			_putchar('%');
-			(*c)++;
+			*c = *c + _putchar('%');
 			break;
 		case 'c':
-			_putchar((char) va_arg(*ap, int));
-			(*c)++;
+			*c = *c + _putchar((char) va_arg(*ap, int));
 			break;
 		case 's':
-			str = va_arg(*ap, char *);
-			*c = *c + print_str(str);
+			*c = *c + print_str(va_arg(*ap, char *));
 			break;
 		case 'i':
-			*c = *c + print_number(va_arg(*ap, int));
-			break;
 		case 'd':
 			*c = *c + print_number(va_arg(*ap, int));
-			break;
-		case '\0':
-			(*format)--;
-			*c = -1;
 			break;
 		case 'b':
 			*c = *c + print_binary(va_arg(*ap, unsigned int));
 			break;
 		case 'u':
-			*c = *c + print_unsigned(va_arg(*ap, unsigned int));
+			*c = *c + print_unsigned_int(va_arg(*ap, unsigned int));
 			break;
 		case 'o':
 			*c = *c + print_octal(va_arg(*ap, unsigned int));
@@ -57,8 +46,7 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			*c = *c + print_S_string(va_arg(*ap, char *));
 			break;
 		default:
-			_putchar('%');
-			*c = *c + 1;
+			*c = *c + _putchar('%');
 			*format = *format - fc - 1;
 			break;
 	}
@@ -88,6 +76,8 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
+			if (*(format + 1) == '\0')
+				return (-1);
 			fc = flag_count(++format);
 			format = format + fc;
 			_printf_switch_helper(&format, &c, fc, &ap);

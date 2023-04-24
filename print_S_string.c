@@ -2,7 +2,7 @@
 
 /**
  * print_S_string - print nnumber in base 16
- * @n: number
+ * @str: string
  *
  * Return: number of character printed
  */

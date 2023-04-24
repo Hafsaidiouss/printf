@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * print_unsigned - print number using _putchar
+ * print_unsigned_int - print number using _putchar
  * @n: Number
  * Return: count
  */
-int print_unsigned(unsigned int n)
+int print_unsigned_int(unsigned int n)
 {
 	unsigned int i = n;
 	int c = 0;

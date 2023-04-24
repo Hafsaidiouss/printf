@@ -4,9 +4,9 @@
 /**
  * print_hex_lower - print hex lower
  * @n: int
- * Retunr: int
+ * Return: int
  */
-int print_hex_lower (unsigned int n)
+int print_hex_lower(unsigned int n)
 {
 	int c = 0;
 
