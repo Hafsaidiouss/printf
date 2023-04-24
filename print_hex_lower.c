@@ -12,7 +12,7 @@ int print_hex_lower(unsigned int n, const char **format, int fc)
 	int hash = 0;
 
 	hash = flag(format, fc, '#');
-	if (hash)
+	if (hash == 1 && n != 0)
 		c = c + print_str("0x");
 
 	if (n > 16)
