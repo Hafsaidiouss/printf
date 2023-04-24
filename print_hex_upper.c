@@ -13,7 +13,7 @@ int print_hex_upper(unsigned int n, const char **format, int fc)
 	int hash = 0;
 
 	hash = flag(format, fc, '#'); 
-	if (hash)
+	if (hash && n != 0)
 		c = c + print_str("0X");
 
 	if (n > 15)
