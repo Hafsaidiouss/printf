@@ -10,13 +10,17 @@ int print_hex_address(long unsigned int n);
 int print_pointer(void *p, const char **format, int fc)
 {
 	int space = 0;
-
-	space = flag(format, fc, ' ');
+	int plus = 0;
+	
+	plus = flag(format, fc, '+');
+	space = flag(format, fc, ' ') * (1 - plus);
+	if (plus == 1 && p != NULL)
+		_putchar('+');
 	if (space == 1 && p != NULL)
 		_putchar(' ');
 	if (p == NULL)
 		return (print_str("(nil)"));
-	return (space + print_str("0x") + print_hex_address((long unsigned int) p));
+	return (space + plus + print_str("0x") + print_hex_address((long unsigned int) p));
 }
 
 /**
