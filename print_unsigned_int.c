@@ -9,6 +9,7 @@ int print_unsigned_int(unsigned int n, const char **format, int fc)
 {
 	unsigned int i = n;
 	int c = 0;
+	(void) fc; /*to be removed*/
 
 	if (i / 10)
 	{
