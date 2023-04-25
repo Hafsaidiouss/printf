@@ -16,5 +16,6 @@ int print_S_string(char *str);
 int print_pointer(void *p, const char **format, int fc);
 
 int flag(const char **format, int fc, char flag);
+int print_rev(char *s);
 
 #endif
