@@ -19,8 +19,7 @@ int print_rot(char *str)
 		{
 			if (str[i] == l[j])
 			{
-				str[i] = n[j];
-				_putchar(str[i]);
+				_putchar(n[j]);
 				c++;
 				break;
 			}
