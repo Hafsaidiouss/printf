@@ -5,7 +5,7 @@
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_str(char *str, const char **format, int fc);
-int print_number(long int n, const char **format, int fc);
+int print_number(int n, const char **format, int fc);
 int print_binary(unsigned int n, const char **format, int fc);
 int flag_count(const char *str);
 int print_unsigned_int(unsigned int n, const char **format, int fc);

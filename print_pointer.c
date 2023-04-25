@@ -21,7 +21,7 @@ int print_pointer(void *p, const char **format, int fc)
 		_putchar(' ');
 	if (p == NULL)
 		return (print_str("(nil)", NULL, 0));
-	str = print_str("0x", NULL, 0;
+	str = print_str("0x", NULL, 0);
 	return (space + plus + str + print_hex_address((unsigned long int) p));
 }
 

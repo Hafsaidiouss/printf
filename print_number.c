@@ -7,7 +7,7 @@
  * @fc: int
  * Return: count
  */
-int print_number(long int n, const  char **format, int fc)
+int print_number(int n, const  char **format, int fc)
 {
 	char s;
 	int c = 0;
