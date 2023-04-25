@@ -6,7 +6,7 @@
  * @n: int
  * Return: int
  */
-int print_hex_lower(unsigned int n, const char **format, int fc)
+int print_hex_lower(long unsigned int n, const char **format, int fc)
 {
 	int c = 0;
 	int hash = 0;
