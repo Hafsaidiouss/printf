@@ -15,7 +15,9 @@ int width_check(const char **format, int fc)
 	int d = 1;
 	int c = 0;
 	char n;
-	
+
+	if (format == NULL)
+		return (0);
 	for (i = 1; i <= fc; i++)
 	{
 		n = *((*format) - i) - '0';

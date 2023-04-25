@@ -18,7 +18,7 @@ int print_hex_lower(unsigned int n, const char **format, int fc)
 	digit = digit_count(n, 16) + hash;
 	c = c + print_padding(width, digit, ' ');
 	if (hash == 1 && n != 0)
-		c = c + print_str("0x");
+		c = c + print_str("0x", NULL, 0);
 	if (n > 16)
 		c = c + print_hex_lower(n / 16, format, 0);
 	if (n % 16 > 9)

@@ -19,8 +19,8 @@ int print_pointer(void *p, const char **format, int fc)
 	if (space == 1 && p != NULL)
 		_putchar(' ');
 	if (p == NULL)
-		return (print_str("(nil)"));
-	return (space + plus + print_str("0x") + print_hex_address((long unsigned int) p));
+		return (print_str("(nil)", NULL, 0));
+	return (space + plus + print_str("0x", NULL, 0) + print_hex_address((long unsigned int) p));
 }
 
 /**

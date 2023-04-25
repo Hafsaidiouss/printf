@@ -24,7 +24,7 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			*c = *c + _putchar((char) va_arg(*ap, int));
 			break;
 		case 's':
-			*c = *c + print_str(va_arg(*ap, char *));
+			*c = *c + print_str(va_arg(*ap, char *), format, fc);
 			break;
 		case 'i':
 			*c = *c + print_number(va_arg(*ap, int), format, fc);
@@ -48,7 +48,7 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			*c = *c + print_hex_upper(va_arg(*ap, unsigned int), format, fc);
 			break;
 		case 'S':
-			*c = *c + print_S_string(va_arg(*ap, char *));
+			*c = *c + print_S_string(va_arg(*ap, char *), format, fc);
 			break;
 		case 'r':
 			*c = *c + print_rev(va_arg(*ap, char *));

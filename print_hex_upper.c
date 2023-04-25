@@ -19,7 +19,7 @@ int print_hex_upper(unsigned int n, const char **format, int fc)
 	digit = digit_count(n, 16) + hash;
 	c = c + print_padding(width, digit, ' ');
 	if (hash && n != 0)
-		c = c + print_str("0X");
+		c = c + print_str("0X", NULL, 0);
 
 	if (n > 15)
 		c = c + print_hex_upper(n / 16, format, 0);
