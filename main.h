@@ -18,5 +18,8 @@ int print_pointer(void *p, const char **format, int fc);
 int flag(const char **format, int fc, char flag);
 int print_rev(char *s);
 int print_rot(char *str);
+int print_padding(int width, int digit, char s);
+int width_check(const char **format, int fc);
+int digit_count(int n, int b);
 
 #endif

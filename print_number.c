@@ -11,12 +11,18 @@ int print_number(int n, const  char **format, int fc)
 	int c = 0;
 	int plus = 0;
 	int space = 0;
+	int width = 0;
+	int digit = 0;
 
+	width = width_check(format, fc);
 	plus = flag(format, fc, '+');
-	space = flag(format, fc, ' ');
+	space = flag(format, fc, ' ') * (1 - plus);
+	digit = digit_count(n, 10) + plus + space;
+
+	c = c + print_padding(width, digit, ' ');
 	if (plus == 1 && n >= 0)
 		c = c + _putchar('+');
-	if (space == 1 && plus == 0 && n >= 0)
+	if (space == 1 && n >= 0)
 		c = c + _putchar(' ');
 	if (n < 0)
 	{

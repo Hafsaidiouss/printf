@@ -7,7 +7,7 @@
  */
 int flag_count(const char *str)
 {
-	char *init = "#0- +'I";
+	char *init = "#0123456789- +'I";
 	int c = 0;
 	char *flag;
 
