@@ -32,9 +32,6 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 		case 'd':
 			*c = *c + print_number(va_arg(*ap, int), format, fc);
 			break;
-		case 'b':
-			*c = *c + print_binary(va_arg(*ap, unsigned int), format, fc);
-			break;
 		case 'u':
 			*c = *c + print_unsigned_int(va_arg(*ap, unsigned int), format, fc);
 			break;
@@ -46,6 +43,27 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			break;
 		case 'X':
 			*c = *c + print_hex_upper(va_arg(*ap, unsigned int), format, fc);
+			break;
+		default:
+			*c = *c + _putchar('%');
+			*format = *format - fc - 1;
+			break;
+	}
+}
+
+/**
+ * _printf_switch_helper2 - handle switch cases for _printf function
+ * @format: pointer of format
+ * @c: pointer to c
+ * @fc: flag count value
+ * @ap: variadic arg list
+ */
+void _printf_switch_helper2(const char **format, int *c, int fc, va_list *ap)
+{
+	switch (**format)
+	{
+		case 'b':
+			*c = *c + print_binary(va_arg(*ap, unsigned int), format, fc);
 			break;
 		case 'S':
 			*c = *c + print_S_string(va_arg(*ap, char *), format, fc);
@@ -91,7 +109,11 @@ int _printf(const char *format, ...)
 				return (-1);
 			fc = flag_count(++format);
 			format = format + fc;
-			_printf_switch_helper(&format, &c, fc, &ap);
+			if (*format == 'b' || *format == 'S' || *format == 'r'
+					|| *format == 'R')
+				_printf_switch_helper(&format, &c, fc, &ap);
+			else
+				_printf_switch_helper(&format, &c, fc, &ap);
 			format++;
 		}
 	}

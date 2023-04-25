@@ -4,6 +4,8 @@ int print_hex_address(unsigned long int n);
 /**
  * print_pointer - prints pointer address
  * @p: pointer
+ * @format: format
+ * @fc: flag count
  *
  * Return: number of characters printed
  */
