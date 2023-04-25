@@ -5,7 +5,7 @@
  * @n: number
  * Return: digit count
  */
-int digit_count(int n, int b)
+int digit_count(long int n, int b)
 {
 	int c = 0;
 

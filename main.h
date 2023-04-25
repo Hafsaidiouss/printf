@@ -4,8 +4,8 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int print_number(int n, const char **format, int fc);
 int print_str(char *str, const char **format, int fc);
+int print_number(long int n, const char **format, int fc);
 int print_binary(unsigned int n, const char **format, int fc);
 int flag_count(const char *str);
 int print_unsigned_int(unsigned int n, const char **format, int fc);
@@ -20,6 +20,7 @@ int print_rev(char *s);
 int print_rot(char *str);
 int print_padding(int width, int digit, char s);
 int width_check(const char **format, int fc);
-int digit_count(int n, int b);
 int char_counter(char *str);
+int digit_count(long int n, int b);
+
 #endif
