@@ -3,6 +3,8 @@
 /**
  * print_binary - print binary
  * @n:  a number
+ * @format: ^poiter to a str
+ * @fc: int
  * Return: counter
  */
 int print_binary(unsigned int n, const char **format, int fc)

@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * digit_count - counts the numbers of digit
- * @base: base of the number
+ * @b: base of the number
  * @n: number
  * Return: digit count
  */

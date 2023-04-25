@@ -3,6 +3,8 @@
 /**
  * print_number - print number using _putchar
  * @n: Number
+ * @format: pointer to a str
+ * @fc: int
  * Return: count
  */
 int print_number(long int n, const  char **format, int fc)

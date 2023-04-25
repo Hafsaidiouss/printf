@@ -3,6 +3,8 @@
 /**
  * print_unsigned_int - print number using _putchar
  * @n: Number
+ * @format: pointer to a sr
+ * @fc: int
  * Return: count
  */
 int print_unsigned_int(unsigned int n, const char **format, int fc)

@@ -3,6 +3,8 @@
 /**
  * print_S_string - print nnumber in base 16
  * @str: string
+ * @format: pointer to a str
+ * @fc: int
  *
  * Return: number of character printed
  */

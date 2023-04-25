@@ -2,7 +2,7 @@
 /**
  * char_counter - char counter
  * @str: char
- * Return: int 
+ * Return: int
  */
 int char_counter(char *str)
 {

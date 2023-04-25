@@ -4,6 +4,8 @@
 /**
  * print_hex_lower - print hex lower
  * @n: int
+ * @format: pointer to a char
+ * @fc: int
  * Return: int
  */
 int print_hex_lower(unsigned int n, const char **format, int fc)

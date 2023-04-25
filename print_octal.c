@@ -3,6 +3,8 @@
 /**
  * print_octal - print number in base 8
  * @n: number
+ * @format: pointer str
+ * @fc: int
  *
  * Return: number of charater printed
  */

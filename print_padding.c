@@ -13,10 +13,10 @@ int print_padding(int width, int digit, char s)
 	int diff = 0;
 
 	if (width > digit)
-        {
-               	diff = width - digit;
-               	for (i = 0; i < diff; i++)
-                       	c = c + _putchar(s);
-        }
+	{
+		diff = width - digit;
+		for (i = 0; i < diff; i++)
+			c = c + _putchar(s);
+	}
 	return (c);
 }

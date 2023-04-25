@@ -1,5 +1,5 @@
 #include "main.h"
-int print_hex_address(long unsigned int n);
+int print_hex_address(unsigned long int n);
 
 /**
  * print_pointer - prints pointer address
@@ -11,7 +11,8 @@ int print_pointer(void *p, const char **format, int fc)
 {
 	int space = 0;
 	int plus = 0;
-	
+	int str;
+
 	plus = flag(format, fc, '+');
 	space = flag(format, fc, ' ') * (1 - plus);
 	if (plus == 1 && p != NULL)
@@ -20,16 +21,16 @@ int print_pointer(void *p, const char **format, int fc)
 		_putchar(' ');
 	if (p == NULL)
 		return (print_str("(nil)", NULL, 0));
-	return (space + plus + print_str("0x", NULL, 0) + print_hex_address((long unsigned int) p));
+	str = print_str("0x", NULL, 0;
+	return (space + plus + str + print_hex_address((unsigned long int) p));
 }
 
 /**
  * print_hex_address - print hex address
  * @n: address number
- * 
  * Return: number of characters printed
  */
-int print_hex_address(long unsigned int n)
+int print_hex_address(unsigned long int n)
 {
 	int c = 0;
 

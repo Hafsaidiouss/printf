@@ -5,6 +5,7 @@
  * flag - check for flag
  * @format: format
  * @fc: flag count
+ * @flag: flag
  *
  * Return: 1 if hash exist, 0 otherwies
  */

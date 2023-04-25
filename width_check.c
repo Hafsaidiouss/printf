@@ -27,7 +27,7 @@ int width_check(const char **format, int fc)
 			width = width + n * d;
 			d = d * 10;
 		}
-		else 
+		else
 			if (c == 1)
 				break;
 	}
