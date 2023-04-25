@@ -17,5 +17,6 @@ int print_pointer(void *p, const char **format, int fc);
 
 int flag(const char **format, int fc, char flag);
 int print_rev(char *s);
+int print_rot(char *str);
 
 #endif

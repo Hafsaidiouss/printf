@@ -51,6 +51,9 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 		case 'r':
 			*c = *c + print_rev(va_arg(*ap, char *));
 			break;
+		case 'R':
+			*c = *c + print_rot(va_arg(*ap, char *));
+			break;
 		default:
 			*c = *c + _putchar('%');
 			*format = *format - fc - 1;
