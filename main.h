@@ -20,6 +20,6 @@ int print_rev(char *s);
 int print_rot(char *str);
 int print_padding(int width, int digit, char s);
 int width_check(const char **format, int fc);
-int digit_count(int n, int b);
+int digit_count(long int n, int b);
 
 #endif
