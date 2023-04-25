@@ -25,6 +25,11 @@ int print_rot(char *str)
 			}
 			j++;
 		}
+		if (j == 54)
+		{
+			_putchar(str[i]);
+			c++;
+		}
 		i++;
 	}
 	return (c);
