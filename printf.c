@@ -27,10 +27,10 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			*c = *c + print_str(va_arg(*ap, char *));
 			break;
 		case 'i':
-			*c = *c + print_number(va_arg(*ap, int), format, fc);
+			*c = *c + print_number(va_arg(*ap, long int), format, fc);
 			break;
 		case 'd':
-			*c = *c + print_number(va_arg(*ap, int), format, fc);
+			*c = *c + print_number(va_arg(*ap, long int), format, fc);
 			break;
 		case 'b':
 			*c = *c + print_binary(va_arg(*ap, unsigned int), format, fc);
