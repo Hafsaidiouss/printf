@@ -5,9 +5,9 @@
  * @n: Number
  * Return: count
  */
-int print_number(long int n, const  char **format, int fc)
+int print_number(int n, const  char **format, int fc)
 {
-	char s;
+	unsigned int i = n;
 	int c = 0;
 	int plus = 0;
 	int space = 0;
@@ -24,17 +24,17 @@ int print_number(long int n, const  char **format, int fc)
 		c = c + _putchar('+');
 	if (space == 1 && n >= 0)
 		c = c + _putchar(' ');
-	s = (n >= 0) - (n < 0);
 	if (n < 0)
 	{
 		_putchar('-');
 		c++;
+		i = -i;
 	}
-	if (n / 10)
+	if (i / 10)
 	{
-		c = c + print_number((n / 10) * s, format, 0);
+		c = c + print_number(i / 10, format, 0);
 	}
-	_putchar((n % 10) * s + '0');
+	_putchar(i % 10 + '0');
 	c++;
 	return (c);
 }

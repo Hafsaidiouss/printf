@@ -6,7 +6,7 @@
  *
  * Return: number of character printed
  */
-int print_hex_upper(long unsigned int n, const char **format, int fc)
+int print_hex_upper(unsigned int n, const char **format, int fc)
 {
 	int c = 0;
 	int d;

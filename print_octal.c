@@ -6,7 +6,7 @@
  *
  * Return: number of charater printed
  */
-int print_octal(long unsigned int n, const char **format, int fc)
+int print_octal(unsigned int n, const char **format, int fc)
 {
 	int c = 0;
 	int hash = 0;
