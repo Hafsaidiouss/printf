@@ -12,7 +12,7 @@ int print_rot(char *str)
 	int j;
 	int c = 0;
 
-	while (str[i] != 0)
+	while (str != NULL && str[i] != 0)
 	{
 		j = 0;
 		while (j < 54)
