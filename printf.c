@@ -111,7 +111,7 @@ int _printf(const char *format, ...)
 			format = format + fc;
 			if (*format == 'b' || *format == 'S' || *format == 'r'
 					|| *format == 'R')
-				_printf_switch_helper(&format, &c, fc, &ap);
+				_printf_switch_helper2(&format, &c, fc, &ap);
 			else
 				_printf_switch_helper(&format, &c, fc, &ap);
 			format++;
