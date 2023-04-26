@@ -108,6 +108,8 @@ int _printf(const char *format, ...)
 			if (*(format + 1) == '\0')
 				return (-1);
 			fc = flag_count(++format);
+			if (fc == -1)
+				return (-1);
 			format = format + fc;
 			if (*format == 'b' || *format == 'S' || *format == 'r'
 					|| *format == 'R')

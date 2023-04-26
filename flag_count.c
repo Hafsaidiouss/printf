@@ -27,5 +27,7 @@ int flag_count(const char *str)
 			return (c);
 		str++;
 	}
+	if (*str == '\0')
+		return (-1);
 	return (c);
 }
