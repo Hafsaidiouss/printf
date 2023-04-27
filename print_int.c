@@ -14,6 +14,9 @@ int print_int(va_list *ap, const char *format, int fc)
 {
 
 	/* FLAGS */
+	int plus = flag(format, fc, '+');
+	int space = flag(format, fc, ' ') * (1 - plus);
+
 	int size = get_size(format, fc);
 	int precision;
 	int lenght;
@@ -46,6 +49,14 @@ int print_int(va_list *ap, const char *format, int fc)
 
 	if (sign == -1)
 		c += _putchar('-');
+	else
+	{
+		if (plus == 1)
+			c += _putchar('+');
+		else if (space = 1)
+			c += _putchar(' ');
+	}
+
 	for (; d > 0; d--)
 	{
 		pow = _pow(10, d - 1);
