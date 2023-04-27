@@ -18,31 +18,31 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			*c = *c + _putchar('%');
 			break;
 		case 'p':
-			*c = *c + print_pointer(va_arg(*ap, void *), format, fc);
+			*c = *c + print_pointer(ap, *format, fc);
 			break;
 		case 'c':
-			*c = *c + _putchar((char) va_arg(*ap, int));
+			*c = *c + print_char(ap, *format, fc);
 			break;
 		case 's':
-			*c = *c + print_str(va_arg(*ap, char *), format, fc);
+			*c = *c + print_string(ap, *format, fc);
 			break;
 		case 'i':
-			*c = *c + print_number(va_arg(*ap, int), format, fc);
+			*c = *c + print_int(ap, *format, fc);
 			break;
 		case 'd':
-			*c = *c + print_number(va_arg(*ap, int), format, fc);
+			*c = *c + print_int(ap, *format, fc);
 			break;
 		case 'u':
-			*c = *c + print_unsigned_int(va_arg(*ap, unsigned int), format, fc);
+			*c = *c + print_unsigned_int(ap, *format, fc);
 			break;
 		case 'o':
-			*c = *c + print_octal(va_arg(*ap, unsigned int), format, fc);
+			*c = *c + print_octal(ap, *format, fc);
 			break;
 		case 'x':
-			*c = *c + print_hex_lower(va_arg(*ap, unsigned int), format, fc);
+			*c = *c + print_hex_lower(ap, *format, fc);
 			break;
 		case 'X':
-			*c = *c + print_hex_upper(va_arg(*ap, unsigned int), format, fc);
+			*c = *c + print_hex_upper(ap, *format, fc);
 			break;
 		default:
 			*c = *c + _putchar('%');
@@ -63,16 +63,16 @@ void _printf_switch_helper2(const char **format, int *c, int fc, va_list *ap)
 	switch (**format)
 	{
 		case 'b':
-			*c = *c + print_binary(va_arg(*ap, unsigned int), format, fc);
+			*c = *c + print_binary(ap, *format, fc);
 			break;
 		case 'S':
-			*c = *c + print_S_string(va_arg(*ap, char *), format, fc);
+			*c = *c + print_S_string(ap, *format, fc);
 			break;
 		case 'r':
-			*c = *c + print_rev(va_arg(*ap, char *));
+			*c = *c + print_rev_string(ap, *format, fc);
 			break;
 		case 'R':
-			*c = *c + print_rot(va_arg(*ap, char *));
+			*c = *c + print_rot_string(ap, *format, fc);
 			break;
 		default:
 			*c = *c + _putchar('%');

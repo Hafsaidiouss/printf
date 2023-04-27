@@ -8,7 +8,7 @@
  *
  * Return: the value of the width
  */
-int width_check(const char **format, int fc)
+int width_check(const char *format, int fc)
 {
 	int i;
 	int width = 0;
@@ -20,7 +20,7 @@ int width_check(const char **format, int fc)
 		return (0);
 	for (i = 1; i <= fc; i++)
 	{
-		n = *((*format) - i) - '0';
+		n = *(format - i) - '0';
 		if (n >= 0 && n <= 9)
 		{
 			c = 1;

@@ -3,17 +3,18 @@ int print_hex_address(unsigned long int n);
 
 /**
  * print_pointer - prints pointer address
- * @p: pointer
+ * @ap: arg list
  * @format: format
  * @fc: flag count
  *
  * Return: number of characters printed
  */
-int print_pointer(void *p, const char **format, int fc)
+int print_pointer(va_list *ap, const char *format, int fc)
 {
 	int space = 0;
 	int plus = 0;
 	int str;
+	void *p = va_arg(*ap, void *);
 
 	plus = flag(format, fc, '+');
 	space = flag(format, fc, ' ') * (1 - plus);
@@ -22,8 +23,8 @@ int print_pointer(void *p, const char **format, int fc)
 	if (space == 1 && p != NULL)
 		_putchar(' ');
 	if (p == NULL)
-		return (print_str("(nil)", NULL, 0));
-	str = print_str("0x", NULL, 0);
+		return (_print_str("(nil)"));
+	str = _print_str("0x");
 	return (space + plus + str + print_hex_address((unsigned long int) p));
 }
 

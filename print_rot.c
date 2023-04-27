@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * print_rot - ncodes a string using rot13.
+ * _print_rot - ncodes a string using rot13.
  * @str : string to encode
  * Return: char
  */
-int print_rot(char *str)
+int _print_rot(char *str)
 {
 	char l[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char n[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";

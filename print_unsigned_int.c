@@ -1,27 +1,37 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
  * print_unsigned_int - print number using _putchar
- * @n: Number
+ * @ap: arg list
  * @format: pointer to a sr
  * @fc: int
+ *
  * Return: count
  */
-int print_unsigned_int(unsigned int n, const char **format, int fc)
+int print_unsigned_int(va_list *ap, const char *format, int fc)
 {
-	unsigned int i = n;
-	int c = 0;
-	int width = 0;
-	int digit = 0;
+        int c = 0;
+        int d;
+        long int pow;
+        int digit;
+        unsigned long int n = va_arg(*ap, unsigned long int);
 
-	width = width_check(format, fc);
-	digit = digit_count(n, 10);
-	c = c + print_padding(width, digit, ' ');
-	if (i / 10)
-	{
-		c = c + print_number(i / 10, format, 0);
-	}
-	_putchar(i % 10 + '0');
-	c++;
-	return (c);
+	(void) format;
+	(void) fc;
+
+        d = digit_count(n, 10);
+
+        for (; d - 1 > 0; d--)
+        {
+                pow = (long int) _pow(10, d - 1);
+                digit = n / pow;
+                c += _putchar(digit + '0');
+                n %= pow;
+        }
+
+        c += _putchar(n + '0');
+
+        return (c);
 }
+

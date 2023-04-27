@@ -11,7 +11,7 @@ int digit_count(long int n, int b)
 
 	if (n == 0)
 		return (1);
-	while (n > 0)
+	while (n != 0)
 	{
 		c++;
 		n = n / b;

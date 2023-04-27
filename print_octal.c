@@ -1,29 +1,35 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
- * print_octal - print number in base 8
- * @n: number
- * @format: pointer str
+ * print_octal - print number in octal using _putchar
+ * @ap: arg list
+ * @format: pointer to a sr
  * @fc: int
  *
- * Return: number of charater printed
+ * Return: count
  */
-int print_octal(unsigned int n, const char **format, int fc)
+int print_octal(va_list *ap, const char *format, int fc)
 {
-	int c = 0;
-	int hash = 0;
-	int width = 0;
-	int digit = 0;
+        int c = 0;
+        int d;
+        long int pow;
+        int digit;
+        unsigned long int n = va_arg(*ap, unsigned long int);
 
-	width = width_check(format, fc);
-	hash = flag(format, fc, '#');
-	digit = digit_count(n, 8) + hash;
-	c = c + print_padding(width, digit, ' ');
-	if (hash == 1 && n != 0)
-		c = c + _putchar('0');
-	if (n > 7)
-		c = c + print_octal(n / 8, format, 0);
-	_putchar(n % 8 + '0');
-	c++;
-	return (c);
+	(void) format;
+	(void) fc;
+
+        d = digit_count(n, 8);
+
+        for (; d > 0; d--)
+        {
+                pow = _pow(8, d - 1);
+                digit = (n / pow);
+                c += _putchar(digit + '0');
+                n -= digit * pow;
+        }
+
+        return (c);
 }
+

@@ -1,34 +1,42 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
- * print_hex_upper - print nnumber in base 16
- * @n: number
- * @format: pointer to a str
+ * print_hex_upper - print number in uppercase hexadecimal using _putchar
+ * @ap: arg list
+ * @format: pointer to a sr
  * @fc: int
- * Return: number of character printed
+ *
+ * Return: count
  */
-int print_hex_upper(unsigned int n, const char **format, int fc)
+int print_hex_upper(va_list *ap, const char *format, int fc)
 {
-	int c = 0;
-	int d;
-	int hash = 0;
-	int width = 0;
-	int digit = 0;
+        int c = 0;
+        int d;
+        long int pow;
+        char digit;
+        unsigned long int n = va_arg(*ap, unsigned long int);
 
-	width = width_check(format, fc);
-	hash = flag(format, fc, '#');
-	digit = digit_count(n, 16) + hash;
-	c = c + print_padding(width, digit, ' ');
-	if (hash && n != 0)
-		c = c + print_str("0X", NULL, 0);
+	(void) format;
+	(void) fc;
+        d = digit_count(n, 16);
 
-	if (n > 15)
-		c = c + print_hex_upper(n / 16, format, 0);
-	d = n % 16;
-	if (d < 10)
-		_putchar(d + '0');
-	else
-		_putchar(d + 'A' - 10);
-	c++;
-	return (c);
+        for (; d - 1 > 0; d--)
+        {
+                pow = (long int) _pow(16, d - 1);
+                digit = n / pow;
+                n %= pow;
+                if (digit > 9)
+                        c += _putchar(digit - 10 + 'A');
+                else
+                        c += _putchar(digit + '0');
+        }
+
+        if (n > 9)
+                c += _putchar(n - 10 + 'A');
+        else
+                c += _putchar(n + '0');
+
+        return (c);
 }
+
