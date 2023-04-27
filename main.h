@@ -10,6 +10,7 @@ int _print_str(char *s);
 int _print_rev(char *s);
 int _print_rot(char *s);
 long int _pow(long int a, int b);
+int _isdigit(char c);
 
 /* Non-Custom conversion */
 int print_char(va_list *ap, const char *format, int fc);

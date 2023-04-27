@@ -19,9 +19,9 @@ int get_width(va_list *ap, const char *format, int fc)
 	{
 		if (format[i] == '*' && start == 0 && format[i - 1] != '.')
 			return (va_arg(*ap, int));
-		else if (_isdigit(format[i]) && start = 0)
+		else if (_isdigit(format[i]) && start == 0)
 			start = 1;
-		else if (!_isdigit(format[i]) && start = 1)
+		else if (!_isdigit(format[i]) && start == 1)
 			break;
 
 		if (start == 1)

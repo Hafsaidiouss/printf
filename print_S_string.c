@@ -34,13 +34,11 @@ int print_hex(unsigned char n)
 int print_S_string(va_list *ap, const char *format, int fc)
 {
 	int c = 0;
-	int width = 0;
-	int char_c = 0;
 	char *str = va_arg(*ap, char *);
 
-	width = width_check(format, fc);
-	char_c = char_counter(str);
-	c = c + print_padding(width, char_c, ' ');
+	(void) format;
+	(void) fc;
+
 	while (*str != '\0')
 	{
 		if ((*str < 32 && *str > 0) || *str >= 127)
