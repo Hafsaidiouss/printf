@@ -18,7 +18,7 @@ int print_int(va_list *ap, const char *format, int fc)
 	int space = flag(format, fc, ' ') * (1 - plus);
 
 	int size = get_size(format, fc);
-	int precision;
+	int precision = get_precision(ap, format, fc);
 	int width = get_width(ap, format, fc);
 
 	int c = 0;
