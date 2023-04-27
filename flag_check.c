@@ -11,10 +11,17 @@
  */
 int flag(const char *format, int fc, char flag)
 {
+
 	for (; fc > 0; fc--)
 	{
 		if (*(format - fc) == flag)
+		{
+			if (flag  == '0' && (*(format - fc) == '.' || _isdigit(*(format - fc))))
+			{
+				return (0);
+			}
 			return (1);
+		}
 	}
 	return (0);
 }
