@@ -16,7 +16,7 @@ int flag(const char *format, int fc, char flag)
 	{
 		if (*(format - fc) == flag)
 		{
-			if (flag  == '0' && (*(format - fc) == '.' || _isdigit(*(format - fc))))
+			if (flag  == '0' && (*(format - fc - 1) == '.' || _isdigit(*(format - fc - 1))))
 			{
 				return (0);
 			}
