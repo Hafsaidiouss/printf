@@ -44,13 +44,16 @@ int print_int(va_list *ap, const char *format, int fc)
 	}
 	
 	d = digit_count_signed(n, 10);
-	c += print_padding(width, d, ' ');
 	sign = ((n >= 0) ? 1 : -1);
 
 	if (sign == -1)
+	{
+		c += print_padding(width, d + 1, ' ');
 		c += _putchar('-');
+	}
 	else
 	{
+		c += print_padding(width, d, ' ');
 		if (plus == 1)
 			c += _putchar('+');
 		else if (space == 1)
