@@ -49,6 +49,13 @@ int print_int(va_list *ap, const char *format, int fc)
 	d = digit_count_signed(n, 10);
 	sign = ((n >= 0) ? 1 : -1);
 
+	if (minus == 0 && zero == 0)
+                {
+                        if (sign == 1)
+                                c += print_padding(width, d, pc);
+                        else
+                                c += print_padding(width, d + 1, pc);
+                }
 	if (sign == -1)
 	{
 		c += _putchar('-');
@@ -60,7 +67,7 @@ int print_int(va_list *ap, const char *format, int fc)
 		else if (space == 1)
 			c += _putchar(' ');
 	}
-	if (minus == 0)
+	if (minus == 0 && zero == 1)
                 {
                         if (sign == 1)
                                 c += print_padding(width, d, pc);
