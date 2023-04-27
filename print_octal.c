@@ -28,14 +28,14 @@ int print_octal(va_list *ap, const char *format, int fc)
 			n = va_arg(*ap, unsigned int);
 			break;
 		case -1:
-			n = va_arg(*ap, unsigned short);
+			n =(unsigned short) va_arg(*ap, unsigned int);
 			break;
 	}
 
         d = digit_count(n, 8);
 
 	if (hash == 1 && n != 0)
-		c += _putchar('0')
+		c += _putchar('0');
         for (; d > 0; d--)
         {
                 pow = _pow(8, d - 1);
