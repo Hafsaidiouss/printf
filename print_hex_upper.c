@@ -15,7 +15,7 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
         int d;
         long int pow;
         char digit;
-        unsigned long int n = va_arg(*ap, unsigned long int);
+        unsigned long int n;
 
 	int hash = flag(format, fc, '#');
 	int size = get_size(format, fc);
