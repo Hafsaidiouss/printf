@@ -19,7 +19,7 @@ int print_int(va_list *ap, const char *format, int fc)
 
 	int size = get_size(format, fc);
 	int precision;
-	int lenght;
+	int width = get_width(ap, format, fc);
 
 	int c = 0;
 	int sign = 1;
@@ -29,7 +29,6 @@ int print_int(va_list *ap, const char *format, int fc)
 	long int n;
 
 	(void) precision;
-	(void) lenght;
 
 	switch (size)
 	{
@@ -45,6 +44,7 @@ int print_int(va_list *ap, const char *format, int fc)
 	}
 	
 	d = digit_count_signed(n, 10);
+	c += print_padding(width, d, ' ');
 	sign = ((n >= 0) ? 1 : -1);
 
 	if (sign == -1)

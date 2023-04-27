@@ -12,10 +12,10 @@
 int print_string(va_list *ap, const char *format, int fc)
 {
 	int c = 0;
+	int width = get_width(ap, format, fc);
+	char *s = va_arg(*ap, char *);
 
-	(void) format;
-	(void) fc;
-
-	c += _print_str(va_arg(*ap, char *));
+	c += print_padding(width, char_counter(s), ' ');
+	c += _print_str(s);
 	return (c);
 }

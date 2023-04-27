@@ -18,6 +18,7 @@ int print_unsigned_int(va_list *ap, const char *format, int fc)
         unsigned long int n;
 
 	int size = get_size(format, fc);
+	int width = get_width(ap, format, fc);
 
 	switch (size)
 	{
@@ -33,6 +34,7 @@ int print_unsigned_int(va_list *ap, const char *format, int fc)
 	}
 
         d = digit_count_unsigned(n, 10);
+	c += print_padding(width, d, ' ');
 
 	for (; d > 0; d--)
         {
