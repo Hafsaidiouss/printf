@@ -11,21 +11,33 @@ int print_hex_address(unsigned long int n);
  */
 int print_pointer(va_list *ap, const char *format, int fc)
 {
-	int space = 0;
-	int plus = 0;
-	int str;
+	int c = 0;
+	int d;
+	int plus = flag(format, fc, '+');
+	int space = flag(format, fc, ' ') * (1 - plus);
+	int width = get_width(ap, format, fc);
 	void *p = va_arg(*ap, void *);
 
 	plus = flag(format, fc, '+');
 	space = flag(format, fc, ' ') * (1 - plus);
-	if (plus == 1 && p != NULL)
-		_putchar('+');
-	if (space == 1 && p != NULL)
-		_putchar(' ');
+
 	if (p == NULL)
-		return (_print_str("(nil)"));
-	str = _print_str("0x");
-	return (space + plus + str + print_hex_address((unsigned long int) p));
+        {
+                c += print_padding(width, 5, ' ');
+                c += _print_str("(nil)");
+                return (c);
+        }
+
+	d = digit_count_unsigned((unsigned long int) p, 16);
+	c += print_padding(width, d, ' ');
+	if (plus == 1 && p != NULL)
+		c += _putchar('+');
+	if (space == 1 && p != NULL)
+		c += _putchar(' ');
+
+	c += _print_str("0x");
+	c += print_hex_address((unsigned long int) p);
+	return (c);
 }
 
 /**

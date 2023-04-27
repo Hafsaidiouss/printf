@@ -19,6 +19,7 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 
 	int hash = flag(format, fc, '#');
 	int size = get_size(format, fc);
+	int width = get_width(ap, format, fc);
 
 	switch (size)
 	{
@@ -34,6 +35,7 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 	}
 
         d = digit_count_unsigned(n, 16);
+	c += print_padding(width, d, ' ');
 
 	if (hash == 1)
 		c += _print_str("0X");
