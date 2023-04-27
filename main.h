@@ -38,5 +38,6 @@ int digit_count_unsigned(unsigned long int n, int b);
 
 int get_width(va_list *ap, const char *format, int fc);
 int get_size(const char *format, int fc);
+int get_precision(va_list *ap, const char *format, int fc);
 
 #endif
