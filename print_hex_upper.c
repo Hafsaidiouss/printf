@@ -17,10 +17,26 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
         char digit;
         unsigned long int n = va_arg(*ap, unsigned long int);
 
-	(void) format;
-	(void) fc;
+	int hash = flag(format, fc, '#');
+	int size = get_size(format, fc);
+
+	switch (size)
+	{
+		case 1:
+			n = va_arg(*ap, unsigned long);
+			break;
+		case 0:
+			n = va_arg(*ap, unsigned int);
+			break;
+		case -1:
+			n = (unsigned short) va_arg(*ap, unsigned int);
+			break;
+	}
+
         d = digit_count(n, 16);
 
+	if (hash == 1)
+		c += _print_str("0X");
         for (; d - 1 > 0; d--)
         {
                 pow = (long int) _pow(16, d - 1);
