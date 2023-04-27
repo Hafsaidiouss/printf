@@ -22,15 +22,14 @@ int print_binary(va_list *ap, const char *format, int fc)
 
 
         d = digit_count_unsigned(n, 2);
-
-        for (; d - 1 > 0; d--)
+	
+	for (; d > 0; d--)
         {
-                pow = 1 << (d - 1);
-                digit = n & pow ? 1 : 0;
+                pow = _pow(2, d - 1);
+                digit = (n / pow);
                 c += _putchar(digit + '0');
+                n -= digit * pow;
         }
-
-        c += _putchar(n & 1 ? '1' : '0');
 
         return (c);
 }
