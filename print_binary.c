@@ -15,7 +15,7 @@ int print_binary(va_list *ap, const char *format, int fc)
         int d;
         unsigned long int pow;
         int digit;
-        long unsigned int n = va_arg(*ap, long unsigned int);
+        unsigned int n = va_arg(*ap, unsigned int);
 
 	(void) (format);
         (void) (fc);
