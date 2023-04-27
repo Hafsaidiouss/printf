@@ -53,7 +53,7 @@ int print_int(va_list *ap, const char *format, int fc)
 	{
 		if (plus == 1)
 			c += _putchar('+');
-		else if (space = 1)
+		else if (space == 1)
 			c += _putchar(' ');
 	}
 
