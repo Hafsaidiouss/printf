@@ -13,7 +13,7 @@ int print_unsigned_int(va_list *ap, const char *format, int fc)
 {
         int c = 0;
         int d;
-        long int pow;
+        unsigned long int pow;
         int digit;
         unsigned long int n;
 
@@ -32,17 +32,15 @@ int print_unsigned_int(va_list *ap, const char *format, int fc)
 			break;
 	}
 
-        d = digit_count(n, 10);
+        d = digit_count_unsigned(n, 10);
 
-        for (; d - 1 > 0; d--)
+	for (; d > 0; d--)
         {
-                pow = (long int) _pow(10, d - 1);
-                digit = n / pow;
+                pow = _pow(10, d - 1);
+                digit = (n / pow);
                 c += _putchar(digit + '0');
-                n %= pow;
+                n -= digit * pow;
         }
-
-        c += _putchar(n + '0');
 
         return (c);
 }

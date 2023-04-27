@@ -13,7 +13,7 @@ int print_hex_lower(va_list *ap, const char *format, int fc)
 {
         int c = 0;
         int d;
-        long int pow;
+        unsigned long int pow;
         char digit;
         unsigned long int n;
 
@@ -33,7 +33,7 @@ int print_hex_lower(va_list *ap, const char *format, int fc)
 			break;
 	}
 
-        d = digit_count(n, 16);
+        d = digit_count_unsigned(n, 16);
 
 	if (hash == 1)
 		c += _print_str("0x");

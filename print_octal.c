@@ -13,7 +13,7 @@ int print_octal(va_list *ap, const char *format, int fc)
 {
         int c = 0;
         int d;
-        long int pow;
+        unsigned long int pow;
         int digit;
         unsigned long int n;
 	int hash = flag(format, fc, '#');
@@ -32,7 +32,7 @@ int print_octal(va_list *ap, const char *format, int fc)
 			break;
 	}
 
-        d = digit_count(n, 8);
+        d = digit_count_unsigned(n, 8);
 
 	if (hash == 1 && n != 0)
 		c += _putchar('0');

@@ -13,7 +13,7 @@ int print_binary(va_list *ap, const char *format, int fc)
 {
         int c = 0;
         int d;
-        unsigned int pow;
+        unsigned long int pow;
         int digit;
         long unsigned int n = va_arg(*ap, long unsigned int);
 
@@ -21,7 +21,7 @@ int print_binary(va_list *ap, const char *format, int fc)
         (void) (fc);
 
 
-        d = digit_count(n, 2);
+        d = digit_count_unsigned(n, 2);
 
         for (; d - 1 > 0; d--)
         {

@@ -1,4 +1,4 @@
-long int _pow(long int a, int b)
+unsigned long int _pow(unsigned long int a, int b)
 {
         if (b == 0)
                 return (1);

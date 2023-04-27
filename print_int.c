@@ -44,7 +44,7 @@ int print_int(va_list *ap, const char *format, int fc)
 			break;
 	}
 	
-	d = digit_count(n, 10);
+	d = digit_count_signed(n, 10);
 	sign = ((n >= 0) ? 1 : -1);
 
 	if (sign == -1)
