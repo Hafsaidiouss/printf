@@ -19,6 +19,9 @@ int print_unsigned_int(va_list *ap, const char *format, int fc)
 
 	int size = get_size(format, fc);
 	int width = get_width(ap, format, fc);
+	int minus = flag(format, fc, '-');
+	int zero = flag(format, fc, '0') * (1 - minus);
+	char pc = zero ? '0' : ' ';
 
 	switch (size)
 	{
@@ -34,7 +37,8 @@ int print_unsigned_int(va_list *ap, const char *format, int fc)
 	}
 
         d = digit_count_unsigned(n, 10);
-	c += print_padding(width, d, ' ');
+	if (minus == 0)
+		c += print_padding(width, d, pc);
 
 	for (; d > 0; d--)
         {
@@ -43,6 +47,9 @@ int print_unsigned_int(va_list *ap, const char *format, int fc)
                 c += _putchar(digit + '0');
                 n -= digit * pow;
         }
+
+	if (minus == 1)
+                c += print_padding(width, d, pc);
 
         return (c);
 }

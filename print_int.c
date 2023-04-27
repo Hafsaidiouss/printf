@@ -16,6 +16,9 @@ int print_int(va_list *ap, const char *format, int fc)
 	/* FLAGS */
 	int plus = flag(format, fc, '+');
 	int space = flag(format, fc, ' ') * (1 - plus);
+	int minus = flag(format, fc, '-');
+	int zero = flag(format, fc, '0') * (1 - minus);
+	char pc = zero ? '0' : ' ';
 
 	int size = get_size(format, fc);
 	int precision = get_precision(ap, format, fc);
@@ -48,12 +51,14 @@ int print_int(va_list *ap, const char *format, int fc)
 
 	if (sign == -1)
 	{
-		c += print_padding(width, d + 1, ' ');
+		if (minus == 0)
+			c += print_padding(width, d + 1, pc);
 		c += _putchar('-');
 	}
 	else
 	{
-		c += print_padding(width, d, ' ');
+		if (minus == 0)
+			c += print_padding(width, d, pc);
 		if (plus == 1)
 			c += _putchar('+');
 		else if (space == 1)
@@ -67,6 +72,8 @@ int print_int(va_list *ap, const char *format, int fc)
                 c += _putchar(digit + '0');
                 n = n +  ((digit * pow) * (-sign));
 	}
+	if (minus == 0)
+		c += print_padding(width, d, pc);
 	
 	return (c);
 

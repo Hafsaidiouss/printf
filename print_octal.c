@@ -17,6 +17,10 @@ int print_octal(va_list *ap, const char *format, int fc)
         int digit;
         unsigned long int n;
 	int hash = flag(format, fc, '#');
+	int minus = flag(format, fc, '-');
+	int zero = flag(format, fc, '0') * (1 - minus);
+	char pc = zero ? '0' : ' ';
+
 	int size = get_size(format, fc);
 	int width = get_width(ap, format, fc);
 
@@ -34,7 +38,8 @@ int print_octal(va_list *ap, const char *format, int fc)
 	}
 
         d = digit_count_unsigned(n, 8);
-	c += print_padding(width, d, ' ');
+	if (minus == 0)
+		c += print_padding(width, d, pc);
 
 	if (hash == 1 && n != 0)
 		c += _putchar('0');
@@ -45,7 +50,8 @@ int print_octal(va_list *ap, const char *format, int fc)
                 c += _putchar(digit + '0');
                 n -= digit * pow;
         }
-
+	if (minus == 1)
+                c += print_padding(width, d, pc);
         return (c);
 }
 

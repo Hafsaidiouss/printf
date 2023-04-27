@@ -13,9 +13,15 @@ int print_string(va_list *ap, const char *format, int fc)
 {
 	int c = 0;
 	int width = get_width(ap, format, fc);
-	char *s = va_arg(*ap, char *);
+	int minus = flag(format, fc, '-');
+	int zero = flag(format, fc, '0') * (1 - minus);
+	char pc = zero ? '0' : ' ';
 
-	c += print_padding(width, char_counter(s), ' ');
+	char *s = va_arg(*ap, char *);
+	if (minus == 0)
+		c += print_padding(width, char_counter(s), pc);
 	c += _print_str(s);
+	if (minus == 1)
+                c += print_padding(width, char_counter(s), pc);
 	return (c);
 }

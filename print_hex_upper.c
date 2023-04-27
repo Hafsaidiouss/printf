@@ -18,6 +18,10 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
         unsigned long int n;
 
 	int hash = flag(format, fc, '#');
+	int minus = flag(format, fc, '-');
+	int zero = flag(format, fc, '0') * (1 - minus);
+	char pc = zero ? '0' : ' ';
+
 	int size = get_size(format, fc);
 	int width = get_width(ap, format, fc);
 
@@ -35,7 +39,8 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 	}
 
         d = digit_count_unsigned(n, 16);
-	c += print_padding(width, d, ' ');
+	if (minus == 0)
+		c += print_padding(width, d, pc);
 
 	if (hash == 1)
 		c += _print_str("0X");
@@ -55,6 +60,8 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
         else
                 c += _putchar(n + '0');
 
+	if (minus == 1)
+		c += print_padding(width, d, pc);
         return (c);
 }
 
