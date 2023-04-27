@@ -51,19 +51,22 @@ int print_int(va_list *ap, const char *format, int fc)
 
 	if (sign == -1)
 	{
-		if (minus == 0)
-			c += print_padding(width, d + 1, pc);
 		c += _putchar('-');
 	}
 	else
 	{
-		if (minus == 0)
-			c += print_padding(width, d, pc);
 		if (plus == 1)
 			c += _putchar('+');
 		else if (space == 1)
 			c += _putchar(' ');
 	}
+	if (minus == 0)
+                {
+                        if (sign == 1)
+                                c += print_padding(width, d, pc);
+                        else
+                                c += print_padding(width, d + 1, pc);
+                }
 
 	for (; d > 0; d--)
 	{
@@ -72,8 +75,13 @@ int print_int(va_list *ap, const char *format, int fc)
                 c += _putchar(digit + '0');
                 n = n +  ((digit * pow) * (-sign));
 	}
-	if (minus == 0)
-		c += print_padding(width, d, pc);
+	if (minus == 1)
+	{
+		 if (sign == 1)
+                                c += print_padding(width, d, pc);
+                        else
+                                c += print_padding(width, d + 1, pc);
+	}
 	
 	return (c);
 
