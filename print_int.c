@@ -16,10 +16,10 @@ int print_int(va_list *ap, const char *format, int fc)
 	int precision = get_precision(ap, format, fc);
 	int width = get_width(ap, format, fc);
 	int plus = flag(format, fc, '+');
-        int space = flag(format, fc, ' ') * (1 - plus);
-        int minus = flag(format, fc, '-');
-        int zero = flag(format, fc, '0') * (1 - minus);
-        char pc = zero ? '0' : ' ';
+	int space = flag(format, fc, ' ') * (1 - plus);
+	int minus = flag(format, fc, '-');
+	int zero = flag(format, fc, '0') * (1 - minus);
+	char pc = zero ? '0' : ' ';
 	int i, s, p, c = 0, sign = 1, d, digit;
 	long int pow, n;
 
@@ -58,9 +58,9 @@ int print_int(va_list *ap, const char *format, int fc)
 	for (i = d; i > 0; i--)
 	{
 		pow = _pow(10, i - 1);
-                digit = (n / pow) * sign;
-                c += _putchar(digit + '0');
-                n = n +  ((digit * pow) * (-sign));
+		digit = (n / pow) * sign;
+		c += _putchar(digit + '0');
+		n = n +  ((digit * pow) * (-sign));
 	}
 	if (minus == 1)
 		c += print_padding(width, d + s + p, pc);
