@@ -19,7 +19,7 @@ int print_int(va_list *ap, const char *format, int fc)
 	int plus = flag(format, fc, '+');
         int space = flag(format, fc, ' ') * (1 - plus);
         int minus = flag(format, fc, '-');
-        int zero = flag(format, fc, '0') * (1 - minus) * (precision > 0);
+        int zero = flag(format, fc, '0') * (1 - minus);
         char pc = zero ? '0' : ' ';
 
 	int i;
