@@ -36,8 +36,8 @@ int print_int(va_list *ap, const char *format, int fc)
 			break;
 	}
 	if (n == 0 && precision == 0 && flag(format, fc, '.'))
-		return (0);	
-	d = digit_count_signed(n, 10);
+		return (0);
+	d = digit_count_signed_int(n, 10);
 	p = (precision > d) ? precision - d : 0;
 	sign = ((n >= 0) ? 1 : -1);
 	s = (sign < 0) ? 1 : 0;
