@@ -24,6 +24,7 @@ int print_int(va_list *ap, const char *format, int fc)
 	int precision = get_precision(ap, format, fc);
 	int width = get_width(ap, format, fc);
 
+	int i;
 	int c = 0;
 	int sign = 1;
 	int d;
@@ -75,9 +76,9 @@ int print_int(va_list *ap, const char *format, int fc)
                                 c += print_padding(width, d + 1, pc);
                 }
 
-	for (; d > 0; d--)
+	for (i = d; i > 0; i--)
 	{
-		pow = _pow(10, d - 1);
+		pow = _pow(10, i - 1);
                 digit = (n / pow) * sign;
                 c += _putchar(digit + '0');
                 n = n +  ((digit * pow) * (-sign));

@@ -12,6 +12,7 @@
 int print_octal(va_list *ap, const char *format, int fc)
 {
         int c = 0;
+	int i;
         int d;
         unsigned long int pow;
         int digit;
@@ -43,9 +44,9 @@ int print_octal(va_list *ap, const char *format, int fc)
 
 	if (hash == 1 && n != 0)
 		c += _putchar('0');
-        for (; d > 0; d--)
+        for (i = d; i > 0; i--)
         {
-                pow = _pow(8, d - 1);
+                pow = _pow(8, i - 1);
                 digit = (n / pow);
                 c += _putchar(digit + '0');
                 n -= digit * pow;

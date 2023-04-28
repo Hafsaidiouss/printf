@@ -12,6 +12,7 @@
 int print_unsigned_int(va_list *ap, const char *format, int fc)
 {
         int c = 0;
+	int i;
         int d;
         unsigned long int pow;
         int digit;
@@ -40,9 +41,9 @@ int print_unsigned_int(va_list *ap, const char *format, int fc)
 	if (minus == 0)
 		c += print_padding(width, d, pc);
 
-	for (; d > 0; d--)
+	for (i = d; i > 0; i--)
         {
-                pow = _pow(10, d - 1);
+                pow = _pow(10, i - 1);
                 digit = (n / pow);
                 c += _putchar(digit + '0');
                 n -= digit * pow;

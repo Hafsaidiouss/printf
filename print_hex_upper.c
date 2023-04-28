@@ -13,6 +13,7 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 {
         int c = 0;
         int d;
+	int i;
         unsigned long int pow;
         char digit;
         unsigned long int n;
@@ -44,9 +45,9 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 
 	if (hash == 1)
 		c += _print_str("0X");
-        for (; d - 1 > 0; d--)
+        for (i = d; i - 1 > 0; i--)
         {
-                pow = (long int) _pow(16, d - 1);
+                pow = (long int) _pow(16, i - 1);
                 digit = n / pow;
                 n %= pow;
                 if (digit > 9)
