@@ -26,16 +26,16 @@ int print_octal(va_list *ap, const char *format, int fc)
 		case 1:
 			n = va_arg(*ap, unsigned long);
 			break;
-		case 0: 
+		case 0:
 			n = va_arg(*ap, unsigned int);
 			break;
 		case -1:
-			n =(unsigned short) va_arg(*ap, unsigned int);
+			n = (unsigned short) va_arg(*ap, unsigned int);
 			break;
 	}
 	if (n == 0 && precision == 0 && flag(format, fc, '.'))
 		return (0);
-	d = digit_count_unsigned(n, 8);
+	d = digit_count_unsigned_int(n, 8);
 	p = (precision > d) ? precision - d : 0;
 	if (minus == 0)
 		c += print_padding(width, d + p, pc);
