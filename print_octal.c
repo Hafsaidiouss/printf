@@ -14,6 +14,7 @@ int print_octal(va_list *ap, const char *format, int fc)
         int c = 0;
 	int i;
         int d;
+	int p;
         unsigned long int pow;
         int digit;
         unsigned long int n;

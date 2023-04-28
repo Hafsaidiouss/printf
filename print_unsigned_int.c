@@ -13,6 +13,7 @@ int print_unsigned_int(va_list *ap, const char *format, int fc)
 {
         int c = 0;
 	int i;
+	int p;
         int d;
         unsigned long int pow;
         int digit;

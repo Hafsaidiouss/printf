@@ -14,6 +14,7 @@ int print_hex_lower(va_list *ap, const char *format, int fc)
         int c = 0;
 	int i; 
         int d;
+	int p;
         unsigned long int pow;
         char digit;
         unsigned long int n;
@@ -25,6 +26,7 @@ int print_hex_lower(va_list *ap, const char *format, int fc)
 
 	int size = get_size(format, fc);
 	int width = get_width(ap, format, fc);
+	int precision = get_precision(ap, format, fc);
 
 	switch (size)
 	{

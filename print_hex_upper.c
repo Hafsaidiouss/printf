@@ -14,6 +14,7 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
         int c = 0;
         int d;
 	int i;
+	int p;
         unsigned long int pow;
         char digit;
         unsigned long int n;
@@ -41,6 +42,7 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 	}
 
         d = digit_count_unsigned(n, 16);
+	p = (precision > d) ? precision - d : 0;
 	if (minus == 0)
 		c += print_padding(width, d + p + 2 * hash, pc);
 
