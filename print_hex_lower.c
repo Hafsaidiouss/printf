@@ -49,7 +49,7 @@ int print_hex_lower(va_list *ap, const char *format, int fc)
 	if (minus == 0)
 		c += print_padding(width, d + p + 2 * hash, pc);
  
-	if (hash == 1)
+	if (hash == 1 && n != 0)
 		c += _print_str("0x");
 	c += print_padding(p, 0, '0');
         for (i = d; i - 1 > 0; i--)
