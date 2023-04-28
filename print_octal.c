@@ -24,6 +24,7 @@ int print_octal(va_list *ap, const char *format, int fc)
 
 	int size = get_size(format, fc);
 	int width = get_width(ap, format, fc);
+	int precision = get_precision(ap, format, fc);
 
 	switch (size)
 	{
@@ -39,11 +40,13 @@ int print_octal(va_list *ap, const char *format, int fc)
 	}
 
         d = digit_count_unsigned(n, 8);
+	p = (precision > d) ? precision - d : 0;
 	if (minus == 0)
-		c += print_padding(width, d, pc);
+		c += print_padding(width, d + p, pc);
 
 	if (hash == 1 && n != 0)
 		c += _putchar('0');
+	c += print_padding(p, 0, '0');
         for (i = d; i > 0; i--)
         {
                 pow = _pow(8, i - 1);
@@ -52,7 +55,7 @@ int print_octal(va_list *ap, const char *format, int fc)
                 n -= digit * pow;
         }
 	if (minus == 1)
-                c += print_padding(width, d, pc);
+                c += print_padding(width, d + p, pc);
         return (c);
 }
 

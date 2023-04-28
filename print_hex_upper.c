@@ -25,6 +25,7 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 
 	int size = get_size(format, fc);
 	int width = get_width(ap, format, fc);
+	int precision = get_precision(ap, format, fc);
 
 	switch (size)
 	{
@@ -41,10 +42,11 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 
         d = digit_count_unsigned(n, 16);
 	if (minus == 0)
-		c += print_padding(width, d, pc);
+		c += print_padding(width, d + p + 2 * hash, pc);
 
 	if (hash == 1)
 		c += _print_str("0X");
+	p = (precision > d) ? precision - d : 0;
         for (i = d; i - 1 > 0; i--)
         {
                 pow = (long int) _pow(16, i - 1);
@@ -62,7 +64,7 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
                 c += _putchar(n + '0');
 
 	if (minus == 1)
-		c += print_padding(width, d, pc);
+		c += print_padding(width, d + p + 2 * hash, pc);
         return (c);
 }
 

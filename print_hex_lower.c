@@ -40,12 +40,14 @@ int print_hex_lower(va_list *ap, const char *format, int fc)
 	}
 
         d = digit_count_unsigned(n, 16);
-	if (minus == 0)
-		c += print_padding(width, d, pc);
+	p = (precision > d) ? precision - d : 0;
 
+	if (minus == 0)
+		c += print_padding(width, d + p + 2 * hash, pc);
+ 
 	if (hash == 1)
 		c += _print_str("0x");
-
+	c += print_padding(p, 0, '0');
         for (i = d; i - 1 > 0; i--)
         {
                 pow = (long int) _pow(16, i - 1);
@@ -63,7 +65,7 @@ int print_hex_lower(va_list *ap, const char *format, int fc)
                 c += _putchar(n + '0');
 
 	if (minus == 1)
-		c += print_padding(width, d, pc);
+		c += print_padding(width, d + p + 2 * hash, pc);
 
         return (c);
 }
