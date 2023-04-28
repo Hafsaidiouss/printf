@@ -44,9 +44,9 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 		case 'X':
 			*c = *c + print_hex_upper(ap, *format, fc);
 			break;
-		case '\n':
-			*c = *c + _print_str("%\n");
-			break;
+		/*case '\n':
+			c = *c + _print_str("%\n");
+			break;*/
 		default:
 			*c = *c + _putchar('%');
 			*format = *format - fc - 1;
