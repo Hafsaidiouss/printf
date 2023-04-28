@@ -27,14 +27,14 @@ int digit_count_signed(long int n, int b)
  */
 int digit_count_unsigned(unsigned long int n, int b)
 {
-        int c = 0;
+	int c = 0;
 
-        if (n == 0)
-                return (1);
-        while (n != 0)
-        {
-                c++;
-                n = n / b;
-        }
-        return (c);
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		c++;
+		n = n / b;
+	}
+	return (c);
 }
