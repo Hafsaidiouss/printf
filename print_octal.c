@@ -40,6 +40,8 @@ int print_octal(va_list *ap, const char *format, int fc)
 			break;
 	}
 
+	if (n == 0 && precision == 0 && flag(format, fc, '.'))
+                return (0);
         d = digit_count_unsigned(n, 8);
 	p = (precision > d) ? precision - d : 0;
 	if (minus == 0)

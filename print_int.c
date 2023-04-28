@@ -32,7 +32,6 @@ int print_int(va_list *ap, const char *format, int fc)
 	int digit;
 	long int n;
 
-	(void) precision;
 
 	switch (size)
 	{
@@ -46,6 +45,8 @@ int print_int(va_list *ap, const char *format, int fc)
 			n = va_arg(*ap, int);
 			break;
 	}
+	if (n == 0 && precision == 0 && flag(format, fc, '.'))
+		return (0);
 	
 	d = digit_count_signed(n, 10);
 	p = (precision > d) ? precision - d : 0;

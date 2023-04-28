@@ -41,6 +41,8 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 			break;
 	}
 
+	if (n == 0 && precision == 0 && flag(format, fc, '.'))
+                return (0);
         d = digit_count_unsigned(n, 16);
 	p = (precision > d) ? precision - d : 0;
 	if (minus == 0)
@@ -49,6 +51,7 @@ int print_hex_upper(va_list *ap, const char *format, int fc)
 	if (hash == 1)
 		c += _print_str("0X");
 	p = (precision > d) ? precision - d : 0;
+	c += print_padding(p, 0, '0');
         for (i = d; i - 1 > 0; i--)
         {
                 pow = (long int) _pow(16, i - 1);
