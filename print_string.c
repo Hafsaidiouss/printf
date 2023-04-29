@@ -23,10 +23,10 @@ int print_string(va_list *ap, const char *format, int fc)
 	char *s = va_arg(*ap, char *);
 
 	cc = char_counter(s);
-        if (flag(format, fc, '.'))
-                cc = min(cc, precision);
-        if (precision == 0 && flag(format, fc, '.'))
-                return (0);
+	if (flag(format, fc, '.'))
+		cc = min(cc, precision);
+	if (precision == 0 && flag(format, fc, '.'))
+		return (0);
 	if (minus == 0)
 		c += print_padding(width, cc, pc);
 	if (flag(format, fc, '.'))
@@ -39,6 +39,6 @@ int print_string(va_list *ap, const char *format, int fc)
 	else
 		c += _print_str(s);
 	if (minus == 1)
-                c += print_padding(width, cc, pc);
+		c += print_padding(width, cc, pc);
 	return (c);
 }
