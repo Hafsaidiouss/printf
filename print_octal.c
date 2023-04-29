@@ -21,18 +21,12 @@ int print_octal(va_list *ap, const char *format, int fc)
 	int width = get_width(ap, format, fc);
 	int precision = get_precision(ap, format, fc);
 
-	switch (size)
-	{
-		case 1:
-			n = va_arg(*ap, unsigned long);
-			break;
-		case 0:
-			n = va_arg(*ap, unsigned int);
-			break;
-		case -1:
-			n = (unsigned short) va_arg(*ap, unsigned int);
-			break;
-	}
+	if (size == 1)
+		n = va_arg(*ap, unsigned long);
+	else if (size == 0)
+		n = va_arg(*ap, unsigned int);
+	else if (size == -1)
+		n = (unsigned short) va_arg(*ap, unsigned int);
 	if (n == 0 && precision == 0 && flag(format, fc, '.'))
 		return (0);
 	d = digit_count_unsigned_int(n, 8);
