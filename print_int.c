@@ -20,49 +20,36 @@ int print_int(va_list *ap, const char *format, int fc)
 	int minus = flag(format, fc, '-');
 	int zero = flag(format, fc, '0') * (1 - minus);
 	char pc = zero ? '0' : ' ';
-	int i, s, p, c = 0, sign = 1, d, digit;
+	int i, p, c = 0, sign = 1, d, digit;
 	long int pow, n;
 
-	switch (size)
-	{
-		case 1:
-			n = va_arg(*ap, long);
-			break;
-		case -1:
-			n = (short) va_arg(*ap, int);
-			break;
-		case 0:
-			n = va_arg(*ap, int);
-			break;
-	}
+	if (size == 1)
+		n = va_arg(*ap, unsigned long);
+	else if (size == 0)
+		n = va_arg(*ap, unsigned int);
+	else if (size == -1)
+		n = (unsigned short) va_arg(*ap, unsigned int);
 	if (n == 0 && precision == 0 && flag(format, fc, '.'))
 		return (0);
 	d = digit_count_signed_int(n, 10);
 	p = (precision > d) ? precision - d : 0;
 	sign = ((n >= 0) ? 1 : -1);
-	s = (sign < 0) ? 1 : 0;
 	if (minus == 0 && zero == 0)
-		c += print_padding(width, d + s + p, pc);
+		c += print_padding(width, d + (sign == -1) + p, pc);
 	if (sign == -1)
 		c += _putchar('-');
 	else
-	{
-		if (plus == 1)
-			c += _putchar('+');
-		else if (space == 1)
-			c += _putchar(' ');
-	}
+		c += (plus == 1) ? _putchar('+') : ((space == 1) ? _putchar(' ') : 0);
 	if (minus == 0 && zero == 1)
-		c += print_padding(width, d + s + p, pc);
+		c += print_padding(width, d + (sign == -1) + p, pc);
 	c += print_padding(p, 0, '0');
 	for (i = d; i > 0; i--)
 	{
-		pow = _pow(10, i - 1);
-		digit = (n / pow) * sign;
+		digit = (n / _pow(10, i - 1)) * sign;
 		c += _putchar(digit + '0');
-		n = n +  ((digit * pow) * (-sign));
+		n = n +  ((digit * _pow(10, i - 1)) * (-sign));
 	}
 	if (minus == 1)
-		c += print_padding(width, d + s + p, pc);
+		c += print_padding(width, d + (sign == -1) + p, pc);
 	return (c);
 }
