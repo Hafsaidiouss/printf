@@ -21,7 +21,7 @@ int print_int(va_list *ap, const char *format, int fc)
 	int zero = flag(format, fc, '0') * (1 - minus);
 	char pc = zero ? '0' : ' ';
 	int i, p, c = 0, sign = 1, d, digit;
-	long int pow, n;
+	long int n;
 
 	if (size == 1)
 		n = va_arg(*ap, unsigned long);
