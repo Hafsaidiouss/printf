@@ -33,12 +33,12 @@ int print_hex_lower(va_list *ap, const char *format, int fc)
 			n = (unsigned short) va_arg(*ap, unsigned int);
 			break;
 	}
-	d = digit_count_unsigned(n, 16);
+	d = digit_count_unsigned_int(n, 16);
 	p = (precision > d) ? precision - d : 0;
 	if (n == 0 && precision == 0 && flag(format, fc, '.'))
 		return (0);
 	if (minus == 0)
-		c += print_padding(width, d + p + 2 * hash, pc); 
+		c += print_padding(width, d + p + 2 * hash, pc);
 	if (hash == 1 && n != 0)
 		c += _print_str("0x");
 	c += print_padding(p, 0, '0');
@@ -51,8 +51,8 @@ int print_hex_lower(va_list *ap, const char *format, int fc)
 			c += _putchar(digit - 10 + 'a');
 		else
 			c += _putchar(digit + '0');
-        }
-        if (n > 9)
+	}
+	if (n > 9)
 		c += _putchar(n - 10 + 'a');
 	else
 		c += _putchar(n + '0');
