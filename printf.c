@@ -46,7 +46,7 @@ void _printf_switch_helper(const char **format, int *c, int fc, va_list *ap)
 			break;
 		default:
 			*c = *c + _putchar('%');
-			*format = *format - fc - 1;
+			*format = *format - 1;
 			break;
 	}
 }
@@ -76,7 +76,7 @@ void _printf_switch_helper2(const char **format, int *c, int fc, va_list *ap)
 			break;
 		default:
 			*c = *c + _putchar('%');
-			*format = *format - fc - 1;
+			*format = *format - 1;
 			break;
 	}
 }
