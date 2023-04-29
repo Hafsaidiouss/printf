@@ -33,8 +33,8 @@ int flag_count(const char *str);
 int flag(const char *format, int fc, char flag);
 int print_padding(int width, int digit, char s);
 int char_counter(char *str);
-int digit_count_signed(long int n, int b);
-int digit_count_unsigned(unsigned long int n, int b);
+int digit_count_signed_int(long int n, int b);
+int digit_count_unsigned_int(unsigned long int n, int b);
 
 int get_width(va_list *ap, const char *format, int fc);
 int get_size(const char *format, int fc);
