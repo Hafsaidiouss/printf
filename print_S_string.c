@@ -3,8 +3,7 @@
 /**
  * print_hex - print nnumber in base 16
  * @n: number
- * @format: pointer to a str
- * @fc: int
+ *
  * Return: number of character printed
  */
 int print_hex(unsigned char n)
