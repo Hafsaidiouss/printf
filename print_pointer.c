@@ -20,15 +20,13 @@ int print_pointer(va_list *ap, const char *format, int fc)
 
 	plus = flag(format, fc, '+');
 	space = flag(format, fc, ' ') * (1 - plus);
-
 	if (p == NULL)
-        {
-                c += print_padding(width, 5, ' ');
-                c += _print_str("(nil)");
-                return (c);
-        }
-
-	d = digit_count_unsigned((unsigned long int) p, 16);
+	{
+		c += print_padding(width, 5, ' ');
+		c += _print_str("(nil)");
+		return (c);
+	}
+	d = digit_count_unsigned_int((unsigned long int) p, 16);
 	c += print_padding(width, d, ' ');
 	if (plus == 1 && p != NULL)
 		c += _putchar('+');
