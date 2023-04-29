@@ -10,10 +10,10 @@
  */
 int print_rot_string(va_list *ap, const char *format, int fc)
 {
-        char *s = va_arg(*ap, char *);
+	char *s = va_arg(*ap, char *);
 
 	(void) format;
 	(void) fc;
 
-        return (_print_rot(s));
+	return (_print_rot(s));
 }
