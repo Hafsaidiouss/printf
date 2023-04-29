@@ -24,11 +24,11 @@ int print_int(va_list *ap, const char *format, int fc)
 	long int n;
 
 	if (size == 1)
-		n = va_arg(*ap, unsigned long);
+		n = va_arg(*ap, long);
 	else if (size == 0)
-		n = va_arg(*ap, unsigned int);
+		n = va_arg(*ap, int);
 	else if (size == -1)
-		n = (unsigned short) va_arg(*ap, unsigned int);
+		n = (short) va_arg(*ap, int);
 	if (n == 0 && precision == 0 && flag(format, fc, '.'))
 		return (0);
 	d = digit_count_signed_int(n, 10);
