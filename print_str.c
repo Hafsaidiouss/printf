@@ -2,7 +2,7 @@
 
 /**
  * _print_str - prints string
- * @str: string
+ * @s: string
  *
  * Return: len str
  */
